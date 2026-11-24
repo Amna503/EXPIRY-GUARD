@@ -1,4 +1,5 @@
 # 🛡️ ExpiryGuard
+
 ### AI-Powered Expiry Management & Inventory Intelligence Platform
 
 <p align="center">
@@ -6,127 +7,137 @@
 </p>
 
 <p align="center">
-  A multi-business inventory intelligence platform designed to monitor product expiry, manage stock batches, identify expiry risks, and help businesses minimize avoidable inventory losses.
+  A multi-business inventory intelligence platform for batch-level stock tracking, expiry monitoring,
+  AI-assisted risk analysis and waste reduction.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Project-Academic%20%7C%20Innovation-blueviolet" />
   <img src="https://img.shields.io/badge/Platform-Web%20Application-blue" />
-  <img src="https://img.shields.io/badge/Team-5%20Members-orange" />
-  <img src="https://img.shields.io/badge/Status-In%20Development-yellow" />
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-2ea44f" />
+  <img src="https://img.shields.io/badge/Tests-45%20passing-brightgreen" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-yellow" />
 </p>
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [Problem Statement](#2-problem-statement)
+3. [Proposed Solution](#3-proposed-solution)
+4. [Key Features](#4-key-features)
+5. [Application Pages](#5-application-pages)
+6. [Technology Stack](#6-technology-stack)
+7. [System Architecture](#7-system-architecture)
+8. [Core Database Design](#8-core-database-design)
+9. [Repository Structure](#9-repository-structure)
+10. [Getting Started](#10-getting-started)
+11. [Demo Modes](#11-demo-modes)
+12. [Testing & Quality](#12-testing--quality)
+13. [Security & Data Integrity](#13-security--data-integrity)
+14. [Team Structure](#14-team-structure)
+15. [Development Roadmap](#15-development-roadmap)
+16. [Expected Impact](#16-expected-impact)
+17. [Future Scope](#17-future-scope)
+18. [Academic Project Information](#18-academic-project-information)
 
 ---
 
 ## 1. Project Overview
 
-ExpiryGuard is a smart inventory management and expiry intelligence platform that addresses a significant operational problem faced by businesses: **financial losses, product waste, and safety risks caused by poor expiry-date monitoring.**
+ExpiryGuard addresses a significant operational problem faced by businesses: **financial losses, product waste and safety risks caused by poor expiry-date monitoring.**
 
-Traditional inventory management systems primarily focus on product quantities and stock movements. However, businesses also need visibility into product batches, expiry dates, stock rotation, and potential expiry-related losses.
-
-ExpiryGuard introduces an intelligent approach by combining:
+Traditional inventory systems focus on quantities and stock movements. ExpiryGuard adds the missing dimension — **batches, expiry dates, stock rotation and expiry-related loss** — through:
 
 - Batch-level inventory tracking
-- Barcode identification and QR-based tracking
-- Automated expiry monitoring
+- Barcode identification and QR-based batch lookup
+- Automated expiry monitoring and prioritised alerts
 - AI-assisted expiry-risk analysis
 - Predictive inventory analytics
-- Smart stock-management recommendations
-- Multi-business and multi-branch management
+- Smart discount and transfer recommendations
+- Multi-branch stock visibility
 
-Our objective is to transform inventory management from a reactive process into a proactive, data-driven operation.
+The goal is to move inventory management from a reactive process to a proactive, data-driven operation.
 
 ## 2. Problem Statement
 
-Businesses such as supermarkets, pharmacies, restaurants, grocery stores, and warehouses often encounter:
+Businesses such as supermarkets, pharmacies, restaurants, grocery stores and warehouses regularly face:
 
-- Products expiring before they are sold or consumed.
-- Financial losses caused by unsold or unused inventory.
-- Manual and time-consuming expiry-date monitoring.
-- Lack of batch-level stock visibility.
-- Inefficient stock rotation.
-- Limited predictive insights for inventory decisions.
-- Difficulty identifying products requiring immediate action.
+- Products expiring before they are sold or consumed
+- Financial losses from unsold or unused inventory
+- Manual, time-consuming expiry-date checks
+- No batch-level stock visibility
+- Inefficient stock rotation (no FEFO discipline)
+- Limited predictive insight for purchasing decisions
+- Difficulty spotting what needs action *today*
 
-These problems can lead to unnecessary waste, reduced profitability, and operational inefficiency.
+These issues lead to avoidable waste, reduced profitability and operational inefficiency.
 
 ## 3. Proposed Solution
 
-ExpiryGuard provides a centralized platform that allows businesses to manage products, monitor individual batches, receive expiry alerts, and analyze inventory risks.
-
-Instead of waiting until products expire, the platform helps businesses identify potential problems early and take preventive action.
+ExpiryGuard provides one centralised platform to register products, record receiving, monitor every batch, receive expiry alerts and analyse inventory risk.
 
 ### Core workflow
 
-1. A business registers products and receives stock.
-2. Product batches are recorded with quantities and expiry dates.
-3. Barcode scanning helps identify products.
+1. Register products and receive stock deliveries.
+2. Each delivery becomes a batch with quantities and an expiry date.
+3. Barcode scanning identifies products instantly.
 4. The system continuously evaluates batch expiry status.
-5. Automated alerts highlight products requiring attention.
+5. Alerts highlight what needs attention now.
 6. AI-assisted analysis provides risk insights and recommendations.
-7. Business owners monitor performance through analytics dashboards.
+7. Owners monitor performance through analytics dashboards.
 
 ## 4. Key Features
 
 ### 📦 Smart Inventory Management
-- Product registration and categorization.
-- Stock quantity management.
-- Batch-level inventory records.
-- Supplier and branch management.
-- Stock-in and stock-out transactions.
-- Inventory history and audit tracking.
+- Product registration with SKU, barcode, category and stock thresholds
+- Batch-level records: manufacturing, purchase and expiry dates
+- Supplier and branch attribution per batch
+- Stock-in (receive) and stock-out (deduct) transactions
+- Low-stock and out-of-stock detection
 
 ### 📷 Barcode & QR Integration
-- Barcode-based product identification.
-- QR-code generation for batch tracking.
-- Quick access to product and batch information.
-- Simplified inventory operations.
+- Live camera barcode scanning (ZXing)
+- QR-code generation for batch records
+- Instant product lookup from the scanner page
 
-**Important technical consideration:** Standard retail barcodes generally identify a product, not its expiry date. ExpiryGuard therefore records expiry information during stock receiving or through supported data integrations. QR codes can provide a link to batch-specific records.
+> **Technical note:** retail barcodes identify a product, not its expiry date. Expiry therefore is recorded at stock receiving or via data integration; QR codes link to the specific batch record.
 
 ### ⏰ Expiry Intelligence
-- Near-expiry product detection.
-- Expired stock identification.
-- Configurable expiry-alert thresholds.
-- Batch-level expiry monitoring.
-- Priority-based risk indicators.
-- Automated notifications.
+- Near-expiry and expired stock detection
+- Configurable monitor / expiring-soon windows
+- Colour-coded status: Expired → Expires today → 0-7 days → 8-30 days → Safe
+- Value-at-risk calculation across expiry bands
+- FEFO-first picking guidance
 
 ### 🤖 AI-Powered Inventory Analysis
-- Expiry-risk analysis.
-- Historical inventory trend analysis.
-- Stock-demand forecasting.
-- Identification of potentially wasted inventory.
-- Data-driven stock recommendations.
+- Demand estimates per batch (moving average / baseline)
+- Potential surplus identification with reliability scoring
+- Suggested actions: discount, transfer or monitor
+- Every estimate is labelled with its method and explanation
 
-AI recommendations will be supported by available inventory data and clearly identified assumptions rather than treated as guaranteed predictions.
+AI output is an **estimate for human approval** — prices and transfers are never changed automatically.
 
 ### 📊 Business Analytics
-- Total stock overview.
-- Expired and near-expiry inventory.
-- Inventory value and potential losses.
-- Stock movement trends.
-- Branch-level performance.
-- Forecasting and reporting.
+- Units on hand and inventory value
+- Average days to expiry (unit-weighted)
+- Stock distribution by expiry window
+- Waste trend: recorded vs estimated prevention
+- Breakdown by category and by supplier
 
 ### 💰 Smart Discount Recommendations
-- Identification of eligible near-expiry products.
-- Suggested discount opportunities.
-- Prioritization of stock requiring action.
-- Support for better stock turnover.
-
-Discount suggestions are recommendations; businesses remain responsible for pricing and applicable product-safety rules.
+- Flags near-expiry stock eligible for markdown
+- Ranks suggestions by surplus value and reliability
+- Approve / dismiss workflow with a full audit trail
 
 ### 🔄 Stock Optimization
-- FEFO (First Expired, First Out) inventory strategy.
-- Batch-level stock tracking.
-- Stock transfers between branches.
-- Eligible donation workflows.
-- Inventory audit logs.
+- FEFO (First Expired, First Out) stock deduction
+- Deduct stock from a specific batch
+- Inter-branch transfers and disposal readiness
+- Batch-level history preserved
 
 ### 🏢 Multi-Business Architecture
-
-ExpiryGuard is designed to support different business categories:
 
 | Business Type | Primary Use Case |
 |---|---|
@@ -137,59 +148,87 @@ ExpiryGuard is designed to support different business categories:
 | Warehouses | Large-scale batch monitoring |
 | Distributors | Multi-location stock visibility |
 
-## 5. Technology Stack
+## 5. Application Pages
 
-The proposed architecture uses technologies selected for maintainability, scalability, and integration.
+The frontend is fully implemented. Every route below renders real content with loading, empty and error states.
+
+| Route | Page | What it does |
+|---|---|---|
+| `/` | Landing | Product marketing page and CTAs |
+| `/login`, `/register` | Auth | Sign in / create account |
+| `/onboarding` | Onboarding | First-run setup wizard |
+| `/dashboard` | Dashboard | Expiry KPIs, charts, alerts, AI recommendations |
+| `/products` | Products | Product master data with search, filters, CRUD |
+| `/batches` | Batches | Batch records with filters, details, stock deduction |
+| `/receive` | Receive Stock | Delivery form that creates batches + recent receipts |
+| `/scanner` | Scanner | Camera barcode scanning and product lookup |
+| `/expiry` | Expiry Monitor | All batches ranked by days left + action guide |
+| `/insights` | AI Insights | Recommendation cards with approve/dismiss |
+| `/analytics` | Analytics | KPIs, expiry/waste charts, category & supplier tables |
+| `/branches` | Branches | Per-location stock, risk status, add-branch flow |
+| `/team` | Team & Roles | Members, role changes, invites, permission matrix |
+| `/settings` | Settings | Store profile, expiry rules, notifications, theme |
+| `*` | 404 | Not-found page |
+
+## 6. Technology Stack
+
+### Implemented — Frontend (`client/`)
 
 | Layer | Technology |
 |---|---|
-| Frontend | React, TypeScript, Vite |
-| UI Styling | Tailwind CSS |
-| Routing | React Router |
-| Data Fetching | TanStack Query |
+| Framework | React 19, TypeScript, Vite |
+| Styling | Tailwind CSS 4 |
+| Routing | React Router 7 |
+| Data fetching | TanStack Query 5 (mock/API switchable) |
+| Forms | React Hook Form + Zod |
+| Charts | Recharts |
+| Icons | lucide-react |
+| Scanning / QR | @zxing/browser, @zxing/library, qrcode |
+| State | Zustand (lightweight stores) |
+| Testing | Vitest + Testing Library (45 tests) |
+| Linting | oxlint |
+
+### Planned — Backend, Database, AI
+
+| Layer | Technology |
+|---|---|
 | Backend | Node.js, Express.js, TypeScript |
 | Database | PostgreSQL |
 | ORM | Prisma |
-| AI Service | Python, FastAPI |
-| Data Processing | Pandas |
-| Machine Learning | Scikit-learn |
-| Barcode / QR | ZXing-compatible libraries |
-| Data Visualization | Recharts |
-| Validation | Zod |
-| Testing | Vitest, Supertest, Playwright, Pytest |
+| AI Service | Python, FastAPI, Pandas, Scikit-learn |
+| Validation | Zod (shared contracts) |
+| End-to-end tests | Playwright |
 | Deployment | Vercel, Render / Railway, Docker |
 
-*The final stack may be adjusted according to implementation requirements.*
+*The backend and AI service are not part of this repository yet — the client runs fully on seeded demo data until those services exist.*
 
-## 6. System Architecture
+## 7. System Architecture
 
 ```text
                     EXPIRYGUARD
                          |
                   Web Application
                          |
-                 React + TypeScript
+                 React + TypeScript   ← implemented (this repo)
                          |
-                    API Layer
+                     API Layer
                          |
-                  Node.js + Express
+                Node.js + Express      ← planned
                          |
           +--------------+--------------+
           |              |              |
-       Auth API      Inventory API   Analytics API
+       Auth API     Inventory API   Analytics API
           |              |              |
           +--------------+--------------+
                          |
-                    PostgreSQL
+                    PostgreSQL          ← planned
                          |
-                  Inventory Data
-                         |
-                  Python AI Service
+                  Python AI Service    ← planned
                       FastAPI
                          |
               +----------+----------+
               |          |          |
-           Risk       Forecasting  Insights
+           Risk      Forecasting  Insights
           Analysis       Model
               |          |          |
               +----------+----------+
@@ -197,33 +236,28 @@ The proposed architecture uses technologies selected for maintainability, scalab
                  Business Dashboard
 ```
 
-### Architectural Principles
+### Architectural principles
 
-- Separation of frontend, backend, and AI responsibilities.
-- RESTful API communication.
-- Centralized database management.
-- Role-based access control.
-- Business-level data isolation.
-- Reusable and modular components.
-- Maintainable service architecture.
+- Frontend, backend and AI responsibilities stay separated
+- RESTful API communication with a single response envelope
+- Role-based access control and business-level data isolation
+- Reusable, modular UI components with pure list helpers
+- Demo/real backend switch through one environment flag
 
-## 7. Core Database Design
-
-The proposed relational database includes the following entities:
+## 8. Core Database Design
 
 | Entity | Purpose |
 |---|---|
 | Users | User accounts and authentication |
 | Businesses | Business-level information |
-| Business Members | User-business relationships and roles |
+| Business Members | User–business relationships and roles |
 | Branches | Business locations |
 | Categories | Product classification |
 | Products | Product master records |
 | Suppliers | Supplier information |
 | Batches | Expiry dates and batch quantities |
 | Stock Transactions | Inventory movements |
-| Sales | Sales records |
-| Sale Items | Individual sold products |
+| Sales / Sale Items | Sales records |
 | Alerts | Expiry and inventory alerts |
 | Notifications | User notifications |
 | Forecast Results | AI-generated forecasts |
@@ -231,224 +265,209 @@ The proposed relational database includes the following entities:
 | Stock Transfers | Inter-branch transfers |
 | Audit Logs | Important system activities |
 
-**Data integrity principle:** Product quantities should be managed through validated inventory transactions. Batch records must preserve their expiry dates and stock history.
+**Data integrity principle:** quantities change only through validated transactions; batch records always preserve their expiry dates and history.
 
-## 8. Main System Modules
-
-| Module | Responsibility |
-|---|---|
-| Authentication | Secure login and account management |
-| Business Management | Business and branch configuration |
-| Product Management | Product registration and categorization |
-| Batch Management | Batch-level expiry and quantity tracking |
-| Barcode / QR | Product identification and batch lookup |
-| Inventory Engine | Stock movements and FEFO logic |
-| Expiry Engine | Expiry status and alert generation |
-| AI Engine | Risk analysis and forecasting |
-| Analytics Engine | Reports, metrics, and visualizations |
-| Notification Engine | Alert delivery and notification history |
-
-## 9. Security & Data Integrity
-
-Security is a core requirement rather than an optional enhancement.
-
-Planned safeguards include:
-
-- Secure authentication.
-- Role-based permissions.
-- Business-level data isolation.
-- Server-side input validation.
-- Protected API endpoints.
-- Password hashing.
-- Secure environment-variable management.
-- Database constraints and transactions.
-- Audit logging.
-- Error handling and request validation.
-
-## 10. Repository Structure
-
-Proposed monorepo structure:
+### Expected API contract (client already coded against it)
 
 ```text
-expiryguard/
-│
-├── client/
-│   ├── public/
-│   └── src/
-│       ├── assets/
-│       ├── components/
-│       ├── pages/
-│       ├── layouts/
-│       ├── hooks/
-│       ├── services/
-│       ├── context/
-│       ├── utils/
-│       └── types/
-│
-├── server/
-│   └── src/
-│       ├── config/
-│       ├── controllers/
-│       ├── middleware/
-│       ├── routes/
-│       ├── services/
-│       ├── validators/
-│       └── utils/
-│
-├── ai-service/
-│   ├── app/
-│   ├── models/
-│   ├── services/
-│   └── requirements.txt
-│
-├── docs/
-│   ├── architecture/
-│   ├── database/
-│   └── api/
-│
-├── tests/
-├── .gitignore
-├── README.md
-└── package.json
+GET    /products                 POST   /products
+GET    /products/:id             PUT    /products/:id
+GET    /products/lookup?barcode= DELETE /products/:id
+GET    /batches                  POST   /batches
+GET    /batches/:id              PUT    /batches/:id
+DELETE /batches/:id              POST   /batches/:id/deduct   (FEFO)
+GET    /analytics/waste          GET    /ai/recommendations
 ```
 
-## 11. Team Structure
+Response envelope: `{ success: true, data } | { success: false, error }` — see `client/src/services/http.ts` and `client/src/services/inventoryApi.ts`.
 
-A five-member development team with clearly separated ownership areas.
+## 9. Repository Structure
 
-| Member | Role | Primary Responsibility |
-|---|---|---|
-| Member 1 | Project Lead & Frontend Architect | Project coordination, frontend architecture, dashboard and integration |
-| Member 2 | Frontend & Scanning Developer | Inventory interface, product workflows, barcode and QR integration |
-| Member 3 | Backend & Security Developer | API architecture, authentication, authorization and backend services |
-| Member 4 | Database & Inventory Developer | PostgreSQL, Prisma, batch management and stock operations |
-| Member 5 | AI & Analytics Developer | AI service, expiry-risk analysis, forecasting and analytics |
+```text
+EXPIRY-GUARD/
+│
+├── README.md
+│
+└── client/
+    ├── index.html
+    ├── package.json
+    ├── vite.config.ts
+    ├── tsconfig*.json
+    ├── public/                  # favicon, icon sprite
+    │
+    └── src/
+        ├── main.tsx
+        ├── App.tsx              # route table
+        ├── index.css / App.css
+        ├── assets/              # images
+        ├── components/
+        │   ├── ui/              # Button, Card, Modal, Table helpers, Toast…
+        │   ├── charts/          # Expiry + waste charts
+        │   ├── inventory/       # Stock/batch badges, QR image
+        │   └── DemoBanner.tsx
+        ├── layouts/AppLayout.tsx
+        ├── pages/
+        │   ├── landing/  auth/  onboarding/  dashboard/
+        │   ├── products/  batches/  receive/  scanner/
+        │   ├── expiry/  insights/  analytics/
+        │   ├── branches/  team/  settings/
+        │   └── NotFoundPage.tsx
+        ├── hooks/               # useInventory, useDashboardData
+        ├── services/            # api, inventoryApi, http, mock store
+        ├── data/                # seeded demo data
+        ├── schemas/             # Zod forms
+        ├── types/               # Product, Batch…
+        ├── utils/               # expiry, FEFO, list helpers
+        └── test/setup.ts
+```
 
-Team members should work through separate feature branches and submit changes through pull requests.
-
-## 12. Development Roadmap
-
-- [ ] Phase 1 — Requirements, planning, and system design
-- [ ] Phase 2 — Database schema and API foundation
-- [ ] Phase 3 — Authentication and business management
-- [ ] Phase 4 — Product, batch, and inventory modules
-- [ ] Phase 5 — Barcode and QR integration
-- [ ] Phase 6 — Expiry engine and automated alerts
-- [ ] Phase 7 — AI analysis and forecasting
-- [ ] Phase 8 — Analytics dashboard and reporting
-- [ ] Phase 9 — Integration, testing, and security review
-- [ ] Phase 10 — Deployment and final demonstration
-
-## 13. Getting Started
+## 10. Getting Started
 
 ### Prerequisites
 
-Install the following tools before starting development:
-
-- Node.js (LTS)
-- npm
-- Python 3
-- PostgreSQL
+- Node.js (LTS) and npm
 - Git
 
-### Clone the Repository
+### Clone
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/ExpiryGuard.git
-
-cd ExpiryGuard
+git clone https://github.com/Amna503/EXPIRY-GUARD.git
+cd EXPIRY-GUARD/client
 ```
 
-### Frontend Setup
+### Install & run
 
 ```bash
-cd client
-
 npm install
-
-npm run dev
+npm run dev        # http://localhost:5173
 ```
 
-### Backend Setup
+### Available scripts
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check (`tsc -b`) and production build |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run oxlint |
+| `npm test` | Run the Vitest suite |
+
+### Environment variables
+
+Create `client/.env` if needed (see `client/.env.example`):
 
 ```bash
-cd server
-
-npm install
+VITE_USE_MOCK=true          # true = demo data (default), false = call the API
+VITE_API_URL=http://localhost:4000/api/v1
 ```
 
-Configure the required environment variables before starting the server.
+> **Backend & AI service:** planned as separate `server/` and `ai-service/` directories. Until they exist, leave `VITE_USE_MOCK=true` to run the entire frontend on seeded demo data.
+
+## 11. Demo Modes
+
+Append query flags to any URL while in mock mode:
+
+| URL flag | Effect |
+|---|---|
+| `?empty=1` | Preview empty states |
+| `?fail=1` | Preview error/retry states |
+
+Example: `http://localhost:5173/products?empty=1`
+
+Theme (light/dark) can be toggled from the header moon button and is persisted per device.
+
+## 12. Testing & Quality
 
 ```bash
-npm run dev
+npm test        # Vitest — 45 tests across 8 files
+npm run lint    # oxlint
+npm run build   # tsc -b + vite build
 ```
 
-### AI Service Setup
+Coverage includes:
 
-```bash
-cd ai-service
+- Product and batch list filtering, sorting and stats
+- Expiry status and FEFO helpers
+- Form validation (login, products, batches)
+- Status badge rendering
+- Scanner page behaviour
+- Smoke tests for all seven module pages (Receive, Expiry, Insights, Analytics, Branches, Team, Settings)
 
-python -m venv venv
-```
+Planned additions: API integration tests (Supertest), end-to-end flows (Playwright) and AI-service contracts (Pytest).
 
-Activate the virtual environment on Windows:
+## 13. Security & Data Integrity
 
-```powershell
-venv\Scripts\activate
-```
+Security is a core requirement, not an afterthought.
 
-Install dependencies:
+**Implemented in the client**
 
-```bash
-pip install -r requirements.txt
-```
+- Zod validation on every form before submission
+- No secrets in the repository; configuration via environment variables
+- Consistent API response envelope with centralised error handling
+- Business scope resolved server-side (client never sends `business_id`)
 
-Start the AI service using the project's configured FastAPI entry point.
+**Planned on the backend**
 
-*Note: These commands describe the planned development setup. Exact scripts, environment variables, and service entry points must match the actual repository implementation.*
+- Secure authentication with password hashing (cookie sessions)
+- Role-based permissions (Owner / Manager / Staff / Viewer)
+- Business-level data isolation
+- Server-side input validation and protected endpoints
+- Database constraints and transactions
+- Audit logging and structured error responses
 
-## 14. Testing Strategy
+## 14. Team Structure
 
-Testing will cover:
+A five-member team with clearly separated ownership.
 
-- Authentication and authorization.
-- Product creation and updates.
-- Batch and expiry-date validation.
-- Stock-in and stock-out operations.
-- FEFO stock selection.
-- Expiry alert generation.
-- Business data isolation.
-- Barcode and QR workflows.
-- AI service responses.
-- Dashboard calculations.
-- API integration and error handling.
+| Member | Role | Primary Responsibility |
+|---|---|---|
+| Member 1 | Project Lead & Frontend Architect | Coordination, frontend architecture, dashboard and integration |
+| Member 2 | Frontend & Scanning Developer | Inventory UI, product workflows, barcode and QR |
+| Member 3 | Backend & Security Developer | API architecture, authentication, authorisation |
+| Member 4 | Database & Inventory Developer | PostgreSQL, Prisma, batch and stock operations |
+| Member 5 | AI & Analytics Developer | AI service, expiry-risk analysis, forecasting |
 
-## 15. Expected Impact
+Work happens on feature branches (`feature/*`) with pull requests into `main`.
+
+## 15. Development Roadmap
+
+- [x] Phase 1 — Requirements, planning and system design
+- [x] Phase 2 — Frontend foundation, design system and routing
+- [x] Phase 3 — Landing, authentication and onboarding
+- [x] Phase 4 — Product, batch and inventory modules
+- [x] Phase 5 — Barcode scanning and QR generation
+- [x] Phase 6 — Expiry monitor and alert states
+- [x] Phase 7 — AI insights page (approve/dismiss workflow)
+- [x] Phase 8 — Analytics, branches, team and settings pages
+- [ ] Phase 9 — Backend API, authentication and database
+- [ ] Phase 10 — AI service integration (forecasting endpoints)
+- [ ] Phase 11 — End-to-end testing and security review
+- [ ] Phase 12 — Deployment and final demonstration
+
+## 16. Expected Impact
 
 ExpiryGuard aims to help businesses:
 
-- Reduce avoidable inventory waste.
-- Improve expiry-date visibility.
-- Minimize expiry-related financial losses.
-- Improve stock rotation.
-- Make informed inventory decisions.
-- Save time spent on manual monitoring.
-- Improve operational efficiency.
+- Reduce avoidable inventory waste
+- Improve expiry-date visibility across branches
+- Minimise expiry-related financial losses
+- Improve stock rotation through FEFO
+- Make informed, evidence-based purchasing decisions
+- Save hours spent on manual expiry checks
+- Improve operational efficiency
 
-## 16. Future Scope
+## 17. Future Scope
 
-Potential future enhancements include:
+- Mobile inventory application
+- Advanced demand forecasting models
+- Supplier integrations and automated PO suggestions
+- IoT-enabled cold-storage monitoring
+- Multi-language support
+- Automated markdown scheduling
+- Point-of-sale system integration
+- Business intelligence exports (CSV / PDF)
 
-- Mobile inventory application.
-- Advanced demand forecasting.
-- Supplier integrations.
-- IoT-enabled storage monitoring.
-- Multi-language support.
-- Automated stock optimization.
-- Advanced business intelligence.
-- Integration with existing point-of-sale systems.
-
-## 17. Academic Project Information
+## 18. Academic Project Information
 
 | Field | Details |
 |---|---|
@@ -457,6 +476,7 @@ Potential future enhancements include:
 | Platform | Multi-Business Web Application |
 | Team Size | 5 Members |
 | Development Approach | Modular Full-Stack Architecture |
+| Current Milestone | Complete, tested frontend with demo data |
 | Primary Goal | Intelligent Expiry & Inventory Management |
 
 ---

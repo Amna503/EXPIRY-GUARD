@@ -4,18 +4,20 @@ import clsx from 'clsx'
 
 type Props = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string
+  /** Renders the label for screen readers only (useful inside tables). */
+  labelHidden?: boolean
   error?: string
   options: { value: string; label: string }[]
 }
 
 export const Select = forwardRef<HTMLSelectElement, Props>(function Select(
-  { label, error, options, id, className, ...rest },
+  { label, labelHidden, error, options, id, className, ...rest },
   ref,
 ) {
   const selectId = id ?? rest.name
   return (
     <div>
-      <label htmlFor={selectId} className="mb-1 block text-sm font-medium">{label}</label>
+      <label htmlFor={selectId} className={clsx('mb-1 block text-sm font-medium', labelHidden && 'sr-only')}>{label}</label>
       <select
         ref={ref}
         id={selectId}

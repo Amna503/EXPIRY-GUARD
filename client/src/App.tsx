@@ -5,21 +5,17 @@ import LoginPage from '@/pages/auth/LoginPage'
 import RegisterPage from '@/pages/auth/RegisterPage'
 import OnboardingPage from '@/pages/onboarding/OnboardingPage'
 import DashboardPage from '@/pages/dashboard/DashboardPage'
-import PlaceholderPage from '@/pages/PlaceholderPage'
+import ProductsPage from '@/pages/products/ProductsPage'
+import BatchesPage from '@/pages/batches/BatchesPage'
+import ScannerPage from '@/pages/scanner/ScannerPage'
+import ReceivePage from '@/pages/receive/ReceivePage'
+import ExpiryMonitorPage from '@/pages/expiry/ExpiryMonitorPage'
+import InsightsPage from '@/pages/insights/InsightsPage'
+import AnalyticsPage from '@/pages/analytics/AnalyticsPage'
+import BranchesPage from '@/pages/branches/BranchesPage'
+import TeamPage from '@/pages/team/TeamPage'
+import SettingsPage from '@/pages/settings/SettingsPage'
 import NotFoundPage from '@/pages/NotFoundPage'
-
-const pages = [
-  ['products', 'Products'],
-  ['batches', 'Batches'],
-  ['receive', 'Receive Stock'],
-  ['scanner', 'Barcode Scanner'],
-  ['expiry', 'Expiry Monitor'],
-  ['insights', 'AI Insights'],
-  ['analytics', 'Analytics'],
-  ['branches', 'Branches'],
-  ['team', 'Team & Roles'],
-  ['settings', 'Settings'],
-]
 
 export default function App() {
   return (
@@ -31,9 +27,16 @@ export default function App() {
 
       <Route element={<AppLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
-        {pages.map(([path, title]) => (
-          <Route key={path} path={`/${path}`} element={<PlaceholderPage title={title} />} />
-        ))}
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/batches" element={<BatchesPage />} />
+        <Route path="/receive" element={<ReceivePage />} />
+        <Route path="/scanner" element={<ScannerPage />} />
+        <Route path="/expiry" element={<ExpiryMonitorPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/branches" element={<BranchesPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
